@@ -13,6 +13,7 @@ const {
   updateContactStatusCtrl,
   deleteContactCtrl,
 } = require("../../controllers/contactsCtrl");
+const currenciesCtrl = require("../../controllers/getCurrencies");
 
 const router = express.Router();
 
@@ -23,6 +24,8 @@ router.get("/:contactId", contactIdValidator, catchAsync(getContactByIdCtrl));
 router.post("/", createValidator, catchAsync(addContactCtrl));
 
 router.delete("/:contactId", contactIdValidator, catchAsync(deleteContactCtrl));
+
+router.get("/currencies", currenciesCtrl);
 
 router.put(
   "/:contactId",
